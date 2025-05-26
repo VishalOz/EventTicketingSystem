@@ -14,7 +14,6 @@ public class Main {
         String password = scanner.nextLine();
 
         if (email.equals(adminEmail) && password.equals(adminPassword)) {
-            System.out.println("Welcome Admin");
             adminMenu();
         }else {
             userMenu();
@@ -97,6 +96,18 @@ public class Main {
         System.out.println("UC");
     }
     public static void removeEvent() {
+        System.out.println("UC");
+    }
+    public static void events() {
+        System.out.println("UC");
+    }
+    public static void bookTickets() {
+        System.out.println("UC");
+    }
+    public static void cancelTickets() {
+        System.out.println("UC");
+    }
+    public static void viewBookings() {
         System.out.println("UC");
     }
 }
