@@ -15,6 +15,10 @@ public class Event {
         this.venue = venue;
         this.time = time;
     }
+    @Override
+    public String toString() {
+        return "Event: "+name+ " |  Date: "+date+ " |  Venue: "+venue+ " |  Time: "+time;
+    }
 
     public String getName() {
         return name;

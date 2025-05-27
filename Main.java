@@ -22,7 +22,7 @@ public class Main {
 
     public static void adminMenu() {
         int adminOption = 0;
-        while (adminOption != 3) {
+        while (adminOption != 4) {
             System.out.println("\n=========================================");
             System.out.println("                 ADMIN MENU                ");
             System.out.println("=========================================");
@@ -36,15 +36,13 @@ public class Main {
 
             switch(adminOption) {
                 case 1:
-                    System.out.println("...");
                     addEvent();
                     break;
                 case 2:
-                    System.out.println("...");
                     removeEvent();
                     break;
                 case 3:
-                    System.out.println("...");
+                    events();
                     break;
                 case 4:
                     System.out.println("Exiting...");
@@ -97,13 +95,14 @@ public class Main {
     }
 
     public static void addEvent() {
-        System.out.println("Event name: ");
+        scanner.nextLine();
+        System.out.print("Event name: ");
         String name = scanner.nextLine();
-        System.out.println("Date: ");
+        System.out.print("Date: ");
         String date = scanner.nextLine();
-        System.out.println("Venue: ");
+        System.out.print("Venue: ");
         String venue = scanner.nextLine();
-        System.out.println("Time: ");
+        System.out.print("Time: ");
         String time = scanner.nextLine();
 
         Event.eventsList.add(new Event(name, date, venue, time ));
@@ -130,7 +129,7 @@ public class Main {
         if (Event.eventsList.isEmpty()) {
             System.out.println("No Events Available.");
         }else {
-            for (int i = 0; i <= Event.eventsList.size(); i++) {
+            for (int i = 0; i < Event.eventsList.size(); i++) {
                 System.out.println((i + 1) + ". "+Event.eventsList.get(i));
             }
         }
