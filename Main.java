@@ -98,20 +98,44 @@ public class Main {
 
     public static void addEvent() {
         System.out.println("Event name: ");
-        String eventName = scanner.nextLine();
+        String name = scanner.nextLine();
         System.out.println("Date: ");
         String date = scanner.nextLine();
         System.out.println("Venue: ");
         String venue = scanner.nextLine();
         System.out.println("Time: ");
         String time = scanner.nextLine();
+
+        Event.eventsList.add(new Event(name, date, venue, time ));
+        System.out.println("Event added successfully!");
     }
     public static void removeEvent() {
-        System.out.println("UC");
+        if (Event.eventsList.isEmpty()) {
+            System.out.println("No events to remove.");
+            return;
+        }
+        events();
+        System.out.println("Enter the number of event to remove: ");
+        int index = scanner.nextInt();
+
+        if (index > 0 && index <= Event.eventsList.size()) {
+            Event removedEvent = Event.eventsList.remove(index-1);
+            System.out.println("Event: "+removedEvent.getName() + " removed successfully.");
+        }else {
+            System.out.println("Invalid event number.");
+        }
     }
+
     public static void events() {
-        System.out.println("UC");
+        if (Event.eventsList.isEmpty()) {
+            System.out.println("No Events Available.");
+        }else {
+            for (int i = 0; i <= Event.eventsList.size(); i++) {
+                System.out.println((i + 1) + ". "+Event.eventsList.get(i));
+            }
+        }
     }
+
     public static void bookTickets() {
         System.out.println("UC");
     }

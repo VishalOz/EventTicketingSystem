@@ -1,8 +1,13 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Event {
     private String name;
     private String date;
     private String venue;
     private String time;
+
+    public static List<Event> eventsList = new ArrayList<>();
 
     public Event(String name, String date, String venue, String time) {
         this.name = name;
