@@ -14,7 +14,6 @@ public class Main {
         String password = scanner.nextLine();
 
         if (email.equals(adminEmail) && password.equals(adminPassword)) {
-            System.out.println("Welcome Admin");
             adminMenu();
         }else {
             userMenu();
@@ -29,7 +28,8 @@ public class Main {
             System.out.println("=========================================");
             System.out.println("1. Add Event");
             System.out.println("2. Remove Event");
-            System.out.println("3. Exit");
+            System.out.println("3. View All Events");
+            System.out.println("4. Exit");
             System.out.println("=========================================");
             System.out.print("Enter your choice: ");
             adminOption = scanner.nextInt();
@@ -44,6 +44,9 @@ public class Main {
                     removeEvent();
                     break;
                 case 3:
+                    System.out.println("...");
+                    break;
+                case 4:
                     System.out.println("Exiting...");
                     break;
                 default:
@@ -94,9 +97,52 @@ public class Main {
     }
 
     public static void addEvent() {
-        System.out.println("UC");
+        System.out.println("Event name: ");
+        String name = scanner.nextLine();
+        System.out.println("Date: ");
+        String date = scanner.nextLine();
+        System.out.println("Venue: ");
+        String venue = scanner.nextLine();
+        System.out.println("Time: ");
+        String time = scanner.nextLine();
+
+        Event.eventsList.add(new Event(name, date, venue, time ));
+        System.out.println("Event added successfully!");
     }
     public static void removeEvent() {
+        if (Event.eventsList.isEmpty()) {
+            System.out.println("No events to remove.");
+            return;
+        }
+        events();
+        System.out.println("Enter the number of event to remove: ");
+        int index = scanner.nextInt();
+
+        if (index > 0 && index <= Event.eventsList.size()) {
+            Event removedEvent = Event.eventsList.remove(index-1);
+            System.out.println("Event: "+removedEvent.getName() + " removed successfully.");
+        }else {
+            System.out.println("Invalid event number.");
+        }
+    }
+
+    public static void events() {
+        if (Event.eventsList.isEmpty()) {
+            System.out.println("No Events Available.");
+        }else {
+            for (int i = 0; i <= Event.eventsList.size(); i++) {
+                System.out.println((i + 1) + ". "+Event.eventsList.get(i));
+            }
+        }
+    }
+
+    public static void bookTickets() {
+        System.out.println("UC");
+    }
+    public static void cancelTickets() {
+        System.out.println("UC");
+    }
+    public static void viewBookings() {
         System.out.println("UC");
     }
 }
