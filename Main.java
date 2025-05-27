@@ -28,7 +28,8 @@ public class Main {
             System.out.println("=========================================");
             System.out.println("1. Add Event");
             System.out.println("2. Remove Event");
-            System.out.println("3. Exit");
+            System.out.println("3. View All Events");
+            System.out.println("4. Exit");
             System.out.println("=========================================");
             System.out.print("Enter your choice: ");
             adminOption = scanner.nextInt();
@@ -43,6 +44,9 @@ public class Main {
                     removeEvent();
                     break;
                 case 3:
+                    System.out.println("...");
+                    break;
+                case 4:
                     System.out.println("Exiting...");
                     break;
                 default:
@@ -93,7 +97,14 @@ public class Main {
     }
 
     public static void addEvent() {
-        System.out.println("UC");
+        System.out.println("Event name: ");
+        String eventName = scanner.nextLine();
+        System.out.println("Date: ");
+        String date = scanner.nextLine();
+        System.out.println("Venue: ");
+        String venue = scanner.nextLine();
+        System.out.println("Time: ");
+        String time = scanner.nextLine();
     }
     public static void removeEvent() {
         System.out.println("UC");
