@@ -76,18 +76,15 @@ public class Main {
 
             switch (userOption) {
                 case 1:
-                    System.out.println("...");
                     events();
                     break;
                 case 2:
-                    System.out.println("...");
                     bookTickets();
+                    break;
                 case 3:
-                    System.out.println("...");
                     cancelTickets();
                     break;
                 case 4:
-                    System.out.println("...");
                     viewBookings();
                     break;
                 case 5:

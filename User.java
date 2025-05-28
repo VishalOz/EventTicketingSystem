@@ -4,13 +4,11 @@ import java.util.List;
 public class User {
     private String email;
     private String password;
-    private int ticketCount;
-    private List<String> bookings;
+    private List<Event> bookings;
 
-    public User(String email, String password, int ticketCount) {
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
-        this.ticketCount = ticketCount;
         this.bookings = new ArrayList<>();
     }
 
