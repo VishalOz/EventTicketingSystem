@@ -1,6 +1,10 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
+    public static User currentUser = null;
 
     public static void main (String[] args){
 
@@ -16,6 +20,7 @@ public class Main {
         if (email.equals(adminEmail) && password.equals(adminPassword)) {
             adminMenu();
         }else {
+            currentUser = new User(email, password);
             userMenu();
         }
     }
@@ -136,12 +141,52 @@ public class Main {
     }
 
     public static void bookTickets() {
-        System.out.println("UC");
+        if (Event.eventsList.isEmpty()) {
+            System.out.println("No Events Available");
+            return;
+        }
+        events();
+        System.out.println("Enter the number of the Event: ");
+        int index = scanner.nextInt();
+
+        if (index > 0 && index <= Event.eventsList.size()) {
+            Event selectedEvent = Event.eventsList.get(index-1);
+            currentUser.bookEvent(selectedEvent);
+            System.out.println("Ticket booked for: "+selectedEvent.getName());
+        }else {
+            System.out.println("Invalid index number");
+        }
     }
+
     public static void cancelTickets() {
-        System.out.println("UC");
+        List<Event> bookings = currentUser.getBookings();
+        if (bookings.isEmpty()) {
+            System.out.println("No bookings to cancel");
+            return;
+        }
+        viewBookings();
+        System.out.println("Enter the number of the booking to cancel: ");
+        int index = scanner.nextInt();
+
+        if (index > 0 && index <= bookings.size()) {
+            Event canceled = bookings.get(index - 1);
+            currentUser.cancelBooking(index-1);
+            System.out.println("Canceled booking for: " + canceled.getName());
+        } else {
+            System.out.println("Invalid booking number.");
+        }
+
     }
     public static void viewBookings() {
-        System.out.println("UC");
+        List<Event> bookings = currentUser.getBookings();
+
+        if (bookings.isEmpty()) {
+            System.out.println("You have no bookings.");
+        } else {
+            System.out.println("Your Bookings:");
+            for (int i = 0; i < bookings.size(); i++) {
+                System.out.println((i + 1) + ". " + bookings.get(i));
+            }
+        }
     }
 }
